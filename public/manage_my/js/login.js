@@ -59,17 +59,28 @@ $(function () {
         }
     }).on('success.form.bv', function (e) {
         e.preventDefault();
+
+        // 开启进度条
+        NProgress.start();
+
         //使用ajax提交逻辑
         $.ajax({
             url:'/employee/employeeLogin',
             type:'post',
             data: $('form').serialize(),
             success:function(backData){
+
+                // 数据回来后关闭进度条 用个倒计时让进度条多滚一会
+                setTimeout(function(){
+                    NProgress.done();
+                },1000)
+                
                 console.log(backData);
                 if(backData.success){
                     window.location.href='./index.html';
                 }else {
                     var validator = $("form").data('bootstrapValidator');  //获取表单校验实例的对象
+
                     if(backData.error==1000){
                         // 用户名不存在 更新字段
                         validator.updateStatus('username', 'INVALID', 'callback')
