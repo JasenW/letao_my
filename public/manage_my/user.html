@@ -145,7 +145,7 @@
             <td>
                 {{if value.isDelete==1}} 已禁用 {{else}} 正常 {{/if}}
             </td>
-            <td>
+            <td data-id="{{value.id}}" data-isDelete="{{value.isDelete}}">
                 {{if value.isDelete==1}}
                 <button class="btn btn-success btn-sm">启用</button>
                 {{else}}
