@@ -68,6 +68,10 @@ html,body {
 #section {
     height: 100%;
     padding-left: 180px;
+    background-color: pink;
+}
+#section.hide_left {
+    padding-left: 0;
 }
 #section .topbar {
     height: 50px;
