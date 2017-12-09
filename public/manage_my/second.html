@@ -70,39 +70,89 @@
                     <a href="#">管理系统</a>
                 </li>
                 <li>
-                    首页
+                    分类管理
+                </li>
+                <li>
+                    二级分类
                 </li>
             </ol>
         </div>
-        <!-- 柱状图 -->
-        <div class="pull-left" id="main" style="width: 600px;height:400px;"></div>
-        <!-- 饼状图 -->
-        <div class="pull-right" id="main1" style="width: 600px;height:400px;right:0;"></div>
-        
+
+        <!-- 表格内容 -->
+        <div class="container-fluid table">
+
+            <button data-toggle="modal" data-target="#myModal" class="btn btn-default mb">增加分类</button>
+
+            <table class="table table-bordered text-center table-hover">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>一级分类名称</th>
+                        <th>二级分类名称</th>
+                        <th>二级分类loge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>男生精品</td>
+                        <td>男生精品</td>
+                        <td>
+                            <img src="./images/none.png" alt="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 分页容器 -->
+            <ul id="pagintor"></ul>
+
+        </div>
+
         <!-- 退出登录模态框 -->
         <div class="modal fade bs-example-modal-sm modal_sure" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-sm" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">温馨提示</h4>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">温馨提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-danger">
+                            <i class="glyphicon glyphicon-exclamation-sign"></i> 你确定要退出后台管理系统</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-danger btn-sure">确定</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                  <p class="text-danger"><i class="glyphicon glyphicon-exclamation-sign"></i> 你确定要退出后台管理系统</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                  <button type="button" class="btn btn-danger btn-sure">确定</button>
-                </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div>
-        
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
     </div>
     <script src="./lib/jquery/jquery.min.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="./lib/echarts/echarts.min.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+    <script src="./lib/artTemplate/template.js"></script>
+    <!-- 定义二级分类模板 -->
+    <script id='categoryTmp' type="text/html">
+        {{each rows as value i}}
+        <tr>
+            <th scope="row">{{(page-1)*size+1+i}}</th>
+            <td>{{value.categoryName}}</td>
+            <td>{{value.brandName}}</td>
+            <td>
+                <img style="width:100px" src="{{value.brandLogo}}" alt="">
+            </td>
+        </tr>
+        {{/each}}
+    </script>
     <script src="./js/common.js"></script>
+    <script src="./js/second.js"></script>
 </body>
 
 </html>

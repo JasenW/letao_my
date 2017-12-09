@@ -70,7 +70,7 @@
                     <a href="#">管理系统</a>
                 </li>
                 <li>
-                    首页
+                    用户管理
                 </li>
             </ol>
         </div>
@@ -139,7 +139,7 @@
     <script id='userTmp' type="text/html">
         {{each rows as value i}}
         <tr>
-            <th scope="row">{{(page-1)*size+i}}</th>
+            <th scope="row">{{(page-1)*size+i+1}}</th>
             <td>{{value.username}}</td>
             <td>{{value.mobile}}</td>
             <td>

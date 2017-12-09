@@ -36,7 +36,7 @@ $(function () {
                         message: '用户名由数字字母下划线和.组成'
                     },
                     callback: {
-                        message : '用户名不存在'
+                        message: '用户名不存在'
                     }
                 }
             },
@@ -52,7 +52,7 @@ $(function () {
                         message: '密码长度必须在6到16之间'
                     },
                     callback: {
-                        message : '密码错误'
+                        message: '密码错误'
                     }
                 }
             }
@@ -65,26 +65,26 @@ $(function () {
 
         //使用ajax提交逻辑
         $.ajax({
-            url:'/employee/employeeLogin',
-            type:'post',
+            url: '/employee/employeeLogin',
+            type: 'post',
             data: $('form').serialize(),
-            success:function(backData){
+            success: function (backData) {
 
                 // 数据回来后关闭进度条 用个倒计时让进度条多滚一会
-                setTimeout(function(){
+                setTimeout(function () {
                     NProgress.done();
-                },1000)
-                
-                console.log(backData);
-                if(backData.success){
-                    window.location.href='./index.html';
-                }else {
-                    var validator = $("form").data('bootstrapValidator');  //获取表单校验实例的对象
+                }, 1000)
 
-                    if(backData.error==1000){
+                console.log(backData);
+                if (backData.success) {
+                    window.location.href = './index.html';
+                } else {
+                    var validator = $("form").data('bootstrapValidator'); //获取表单校验实例的对象
+
+                    if (backData.error == 1000) {
                         // 用户名不存在 更新字段
                         validator.updateStatus('username', 'INVALID', 'callback')
-                    }else if(backData.error==1001) {
+                    } else if (backData.error == 1001) {
                         // 密码错误 更新字段
                         validator.updateStatus('password', 'INVALID', 'callback')
                     }
@@ -93,10 +93,10 @@ $(function () {
         })
     });
 
- // 重置表单
-    $('button[type=reset]').on('click',function(){
+    // 重置表单
+    $('button[type=reset]').on('click', function () {
 
-        var validator = $("form").data('bootstrapValidator');  //获取表单校验实例的对象
+        var validator = $("form").data('bootstrapValidator'); //获取表单校验实例的对象
         validator.resetForm();
     })
 
