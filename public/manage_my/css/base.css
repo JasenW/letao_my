@@ -126,3 +126,9 @@ html,body {
 .mb {
    margin-bottom: 30px; 
 }
+.inputFile {
+    width: 82px;
+    height: 34px;
+    position: absolute;
+    opacity: 0;
+}
